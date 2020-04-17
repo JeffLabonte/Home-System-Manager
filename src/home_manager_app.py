@@ -1,20 +1,13 @@
-from flask import Flask, render_template
-BASE_API_ROUTE = '/api/v1'
+from handlers.routes import configure_routes
+from flask import Flask
+
+app = Flask(__name__)
+configure_routes(app=app)
+
+if __name__ == "__main__":
+	app.run()
 
 
-def create_app():
-    return Flask(__name__)
 
 
-app = create_app()
 
-
-@app.route('/index')
-@app.route('/')
-def hello_world():
-    return render_template("index.html")
-
-
-@app.route(f'{BASE_API_ROUTE}/command')
-def run_command():
-    pass
