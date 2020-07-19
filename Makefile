@@ -9,3 +9,6 @@ deps_dev:
 deps_test:
 	pip install -r requirements/requirements.test.txt
 
+run_server:
+	python manage.py runserver
+
