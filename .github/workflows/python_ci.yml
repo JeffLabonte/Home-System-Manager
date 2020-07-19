@@ -22,7 +22,4 @@ jobs:
         python-version: 3.8
     - name: Install dependencies
       run: |
-        make init_test  
-    - name: Running Functional Tests
-      run: |
-        make run_functional_test
+        make deps_test
