@@ -1,5 +1,13 @@
 SHELL := /bin/bash
 
+setup_dev_env:
+	sudo apt install python3-venv
+	@if [ ! -d .venv/ ]; then\
+		python3 -m venv .venv;\
+	fi
+	source .venv/bin/activate
+	make deps_dev
+
 deps_prod:
 	pip install -r requirements/requirements.txt
 
