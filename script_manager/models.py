@@ -33,3 +33,11 @@ class ScriptRevision(models.Model):
     script_file = models.FileField(upload_to='scripts/', required=True)
     revision = models.IntegerField(required=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['revision']
+
+    def __str__(self):
+        return f'Filename: {self.script_file.name},' \
+               f' Revision: {self.revision},' \
+               f' Create at ${self.created_at}'
