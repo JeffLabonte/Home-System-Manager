@@ -30,6 +30,6 @@ class Script(models.Model):
 
 
 class ScriptRevision(models.Model):
-    script_file = models.FileField(upload_to='scripts/')
-    revision = models.IntegerField()
+    script_file = models.FileField(upload_to='scripts/', required=True)
+    revision = models.IntegerField(required=True)
     created_at = models.DateTimeField(auto_now_add=True)
