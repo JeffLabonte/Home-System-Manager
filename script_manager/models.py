@@ -25,6 +25,9 @@ class Script(models.Model):
     last_change = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['name', 'last_change']
+
 
 class ScriptRevision(models.Model):
     script_file = models.FileField(upload_to='scripts/')
