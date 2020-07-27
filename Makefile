@@ -8,6 +8,9 @@ setup_dev_env:
 	source .venv/bin/activate
 	make deps_dev
 
+create_migration:
+	./manage.py makemigrations
+
 deps_prod:
 	pip install -r requirements/requirements.txt
 
