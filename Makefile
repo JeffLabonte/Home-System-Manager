@@ -33,5 +33,5 @@ edit_database:
 	ansible-vault edit secrets/database_env.sh --vault-password-file .vault_password
 
 run_server:
-	python manage.py runserver
+	./src/manage.py runserver
 
