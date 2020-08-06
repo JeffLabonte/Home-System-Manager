@@ -1,2 +1,4 @@
 -r requirements.txt
 -r requirements.test.txt
+ansible
+neovim
