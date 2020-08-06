@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 setup_dev_env:
-	sudo apt install python3-venv
+	sudo apt install pass python3-venv
 	@if [ ! -d .venv/ ]; then\
 		python3 -m venv .venv;\
 	fi
