@@ -28,10 +28,6 @@ deps_test:
 	make apt_deps
 	pip install -r requirements/requirements.test.txt
 
-edit_database:
-	pass home_manager_db_password > .vault_password
-	ansible-vault edit secrets/database_env.sh --vault-password-file .vault_password
-
 run_server:
 	./src/manage.py runserver
 
