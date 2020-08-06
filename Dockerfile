@@ -1,15 +1,15 @@
-FROM ubuntu:latest
+FROM python:3
 LABEL maintainer="grimsleepless@protonmail.com"
 
-EXPOSE 80
-
+EXPOSE 8080
 WORKDIR /opt/app
 
-RUN apt update && apt dist-upgrade -y \
-        && apt install python3 python3-dev
+RUN apt update && apt install build-essential -y
 
-COPY requirements.txt /opt/app/requirements.txt
-RUN pip3 install -r /opt/app/requirements.txt
+COPY Makefile Makefile
+RUN sed -i 's/sudo//g' Makefile
+COPY requirements/ requirements/
+RUN make deps_dev
 
-COPY src /opt/app
+COPY src/ src/
 ENTRYPOINT [ ]
