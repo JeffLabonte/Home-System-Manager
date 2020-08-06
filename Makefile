@@ -8,16 +8,24 @@ setup_dev_env:
 	make deps_dev
 
 create_migration:
-	./manage.py makemigrations
+	./src/manage.py makemigrations
+
+build_docker:
+	docker build -t grimsleepless/home_manager -f Dockerfile .
+
+apt_deps:
+	sudo apt install -y pass python3-venv
 
 deps_prod:
+	make apt_deps
 	pip install -r requirements/requirements.txt
 
 deps_dev:
-	sudo apt install -y pass python3-venv
+	make apt_deps
 	pip install -r requirements/requirements.dev.txt
 
 deps_test:
+	make apt_deps
 	pip install -r requirements/requirements.test.txt
 
 edit_database:
