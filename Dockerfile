@@ -11,5 +11,5 @@ RUN sed -i 's/sudo//g' Makefile
 COPY requirements/ requirements/
 RUN make deps_dev
 
-COPY src/ src/
+COPY src /opt/app
 ENTRYPOINT [ ]
