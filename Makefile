@@ -1,8 +1,10 @@
 SHELL := /bin/bash
 
 setup:
-	cp envs/env.template.sh envs/env.dev
+	cp templates/env.template.sh envs/env.dev
 	chmod +x envs/env.dev
+	cp templates/docker-compose.template.yml docker-compose.yml
+	@echo "Run ./env/env.dev once you have set your variables"
 
 prepare_python_env:
 	@if [ ! -d .venv/ ]; then\
