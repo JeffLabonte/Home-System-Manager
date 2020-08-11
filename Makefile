@@ -3,7 +3,6 @@ SHELL := /bin/bash
 setup:
 	cp envs/env.template.sh envs/env.dev
 	chmod +x envs/env.dev
-	make prepare_python_env
 
 prepare_python_env:
 	@if [ ! -d .venv/ ]; then\
