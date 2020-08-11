@@ -4,11 +4,18 @@ services:
   db:
     image: postgres:12
     environment:
-      - POSTGRES_DB=DB_NAME
-      - POSTGRES_USER=DB_USER
-      - POSTGRES_PASSWORD=DB_PASSWORD
+      - POSTGRES_DATABASE=DB_NAME
+      - POSTGRES_USER=DATABASE_USER
+      - POSTGRES_PASSWORD=DATABASE_PASSWORD
   web:
     build: .
+    environment:
+      - DB_NAME=DATABASE_NAME
+      - DB_PORT=DATABASE_PORT
+      - DB_USER=DATABASE_USER
+      - DB_PASSWORD=DATABASE_PASSWORD
+      - DB_NAME=DATABASE_NAME
+      - DJANGO_SECRET_KEY=SECRET_KEY
     command: python manage.py runserver 0.0.0.0:8080
     volumes:
       - ./src/:/opt/app/
