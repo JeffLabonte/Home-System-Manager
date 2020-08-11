@@ -11,10 +11,10 @@ services:
     build: .
     environment:
       - DB_NAME=DATABASE_NAME
+      - DB_HOST=DATABASE_HOST
       - DB_PORT=DATABASE_PORT
       - DB_USER=DATABASE_USER
       - DB_PASSWORD=DATABASE_PASSWORD
-      - DB_NAME=DATABASE_NAME
       - DJANGO_SECRET_KEY=SECRET_KEY
     command: python manage.py runserver 0.0.0.0:8080
     volumes:
