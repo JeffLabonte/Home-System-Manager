@@ -2,7 +2,7 @@ FROM python:3
 LABEL maintainer="grimsleepless@protonmail.com"
 
 EXPOSE 8080
-ENV DB_PORT=5432
+ENV LANG en_US.utf8
 WORKDIR /opt/app
 
 RUN apt update && apt install build-essential -y
