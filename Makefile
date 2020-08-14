@@ -1,5 +1,9 @@
 SHELL := /bin/bash
 
+deps_dev:
+	make apt_deps
+	pip install -r requirements/requirements.dev.txt
+
 setup:
 	cp templates/env.template.sh envs/env.dev
 	chmod +x envs/env.dev
@@ -25,10 +29,6 @@ apt_deps:
 deps_prod:
 	make apt_deps
 	pip install -r requirements/requirements.txt
-
-deps_dev:
-	make apt_deps
-	pip install -r requirements/requirements.dev.txt
 
 deps_test:
 	make apt_deps
