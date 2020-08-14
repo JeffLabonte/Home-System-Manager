@@ -16,4 +16,4 @@ sed -i "s/DATABASE_PORT/${DB_PORT}/g" docker-compose.yml
 sed -i "s/DATABASE_USER/${DB_USER}/g" docker-compose.yml
 sed -i "s/DATABASE_PASSWORD/${DB_PASSWORD}/g" docker-compose.yml
 
-sed -i "s/SECRET_KEY/${DJANGO_SECRET_KEY}/g" docker-compose.yml
+sed -i "s/SECRET_KEY$/${DJANGO_SECRET_KEY}/g" docker-compose.yml
