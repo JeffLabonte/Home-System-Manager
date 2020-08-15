@@ -7,8 +7,23 @@ deps_dev:
 setup:
 	cp templates/env.template.sh envs/env.dev
 	chmod +x envs/env.dev
-	cp templates/docker-compose.template.yml docker-compose.yml
+	make reset_docker_compose
 	@echo "Run ./env/env.dev once you have set your variables"
+
+docker_compose_full_reset:
+	docker-compose down -v
+	make update_dev_configs
+	docker-compose up -d
+
+enter_dev_env:
+	docker-compose run web /bin/bash
+
+update_dev_configs:
+	make reset_docker_compose
+	./envs/env.dev
+
+reset_docker_compose:
+	cp templates/docker-compose.template.yml docker-compose.yml
 
 prepare_python_env:
 	@if [ ! -d .venv/ ]; then\
