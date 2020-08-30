@@ -4,7 +4,7 @@ DJANGO_SECRET_KEY='Update me'
 
 DB_NAME='Update ME'
 
-DB_HOST='localhost'
+DB_HOST='db'
 DB_PORT='5432'
 
 DB_USER='Update ME'
