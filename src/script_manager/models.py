@@ -7,7 +7,7 @@ from uuid import uuid4
 
 class Script(models.Model):
     FILE_TYPE_CHOICES = [
-        ('bash', "Borne Again Shell Script"),
+        ('bash', 'Bourne Again Shell Script'),
         ('py', 'Python Script'),
         ('sh', 'Shell Script'),
         ('yaml', 'YAML'),
