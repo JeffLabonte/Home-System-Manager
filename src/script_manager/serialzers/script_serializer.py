@@ -2,7 +2,7 @@ from rest_framework import serializers
 from script_manager.models import Script
 
 
-class ScriptSerializer:
+class ScriptSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Script
         fields = [

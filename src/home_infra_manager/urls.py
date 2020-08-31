@@ -24,5 +24,6 @@ router.register(r'script', script_view.ScriptViewSet)
 
 
 urlpatterns = [
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
 ]
