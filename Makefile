@@ -1,7 +1,6 @@
 SHELL := /bin/bash
 
 deps_dev:
-	make apt_deps
 	pip install -r requirements/requirements.dev.txt
 
 setup:
