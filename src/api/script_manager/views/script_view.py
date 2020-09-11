@@ -1,6 +1,6 @@
 from rest_framework import viewsets, permissions
 from api.script_manager.serialzers.script_serializer import ScriptSerializer
-from script_manager.models import Script
+from api.script_manager.models import Script
 
 
 class ScriptViewSet(viewsets.ModelViewSet):
