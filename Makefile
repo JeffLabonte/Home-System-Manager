@@ -41,12 +41,13 @@ build_docker:
 apt_deps:
 	sudo apt install -y pass python3-venv
 
+solus_deps:
+	sudo eopkg it password-store python3
+
 deps_prod:
-	make apt_deps
 	pip install -r requirements/requirements.txt
 
 deps_test:
-	make apt_deps
 	pip install -r requirements/requirements.test.txt
 
 run_server:
