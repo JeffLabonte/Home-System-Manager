@@ -32,11 +32,15 @@ class Script(models.Model):
         choices=FILE_TYPE_CHOICES,
         null=False,
     )
-    last_change = models.DateTimeField(auto_now=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    last_date_modified = models.DateTimeField(auto_now=True)
+    creation_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['name', 'last_change']
+        ordering = [
+            'name',
+            'last_date_modified',
+            'creation_date',
+        ]
 
 
 class ScriptRevision(models.Model):
@@ -49,15 +53,19 @@ class ScriptRevision(models.Model):
         upload_to='scripts/',
         blank=False,
         null=False,
-        unique=True,
+        unique=False,
     )
     revision = models.IntegerField(blank=False)
-    created_at = models.DateTimeField(auto_now_add=True)
+    creation_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['revision', 'id']
+        ordering = [
+            'revision',
+            'creation_date',
+            'id',
+        ]
 
     def __str__(self):
         return f'Filename: {self.script_file.name},' \
                f' Revision: {self.revision},' \
-               f' Create at ${self.created_at}'
+               f' Create at ${self.creation_date}'
