@@ -2,17 +2,15 @@ from django.db import models
 
 from uuid import uuid4
 
-# Create your models here.
+FILE_TYPE_CHOICES = [
+    ('bash', 'Bourne Again Shell Script'),
+    ('py', 'Python Script'),
+    ('sh', 'Shell Script'),
+    ('yaml', 'YAML'),
+]
 
 
 class Script(models.Model):
-    FILE_TYPE_CHOICES = [
-        ('bash', 'Bourne Again Shell Script'),
-        ('py', 'Python Script'),
-        ('sh', 'Shell Script'),
-        ('yaml', 'YAML'),
-    ]
-
     id = models.UUIDField(
         primary_key=True,
         default=uuid4,
