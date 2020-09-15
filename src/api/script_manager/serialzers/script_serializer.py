@@ -30,7 +30,7 @@ class ScriptSerializer(serializers.ModelSerializer):
     name = serializers.CharField(
         required=True,
         max_length=64,
-        min_length=12,
+        min_length=1,
     )
     file_type = serializers.ChoiceField(
         choices=FILE_TYPE_CHOICES,
