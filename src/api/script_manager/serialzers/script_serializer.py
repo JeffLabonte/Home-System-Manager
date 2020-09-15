@@ -9,7 +9,7 @@ from api.script_manager.models import FILE_TYPE_CHOICES
 class ScriptRevisionSerializer(serializers.ModelSerializer):
 
     id = serializers.UUIDField(default=uuid4)
-    script_file = serializers.URLField(required=True)
+    script_file = serializers.FileField(required=True)
     revision = serializers.IntegerField(required=True)
 
     class Meta:
