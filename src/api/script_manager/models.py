@@ -49,7 +49,8 @@ class ScriptRevision(models.Model):
         default=uuid4,
         editable=False,
     )
-    script_file = models.URLField(
+    script_file = models.FileField(
+        upload_to='scripts/',
         blank=False,
         null=False,
         unique=False,
