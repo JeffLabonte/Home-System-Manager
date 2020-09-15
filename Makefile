@@ -52,3 +52,5 @@ deps_test:
 run_server:
 	./src/manage.py runserver
 
+codestyle:
+	flake8
