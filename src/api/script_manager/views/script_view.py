@@ -6,4 +6,4 @@ from api.script_manager.models import Script
 class ScriptViewSet(viewsets.ModelViewSet):
     queryset = Script.objects.all().order_by('last_date_modified')
     serializer_class = ScriptSerializer
-    permission_classes = []
+    permission_classes = [permissions.IsAuthenticated]
