@@ -32,10 +32,21 @@ class ScriptSerializer(serializers.ModelSerializer):
         max_length=64,
         min_length=1,
     )
+
+    script = ScriptRevisionSerializer()
+
     file_type = serializers.ChoiceField(
         choices=FILE_TYPE_CHOICES,
         required=True,
     )
+
+    def create(self, validated_data):
+        script_revision = ScriptRevision(**validated_data.pop('script'))
+        script = Script(script=script_revision, **validated_data)
+        script_revision.save()
+        script.save()
+
+        return script
 
     class Meta:
         model = Script
