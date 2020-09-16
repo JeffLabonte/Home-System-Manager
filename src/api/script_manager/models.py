@@ -21,11 +21,8 @@ class Script(models.Model):
         null=False,
         blank=False,
     )
-    script = models.OneToOneField(
-        'ScriptRevision',
-        on_delete=models.CASCADE,
-        unique=True,
-        null=False,
+    repository = models.CharField(
+
     )
     file_type = models.CharField(
         max_length=5,
@@ -43,19 +40,20 @@ class Script(models.Model):
         ]
 
 
-class ScriptRevision(models.Model):
+class GitRepo(models.Model):
     id = models.UUIDField(
         primary_key=True,
         default=uuid4,
         editable=False,
     )
-    script_file = models.FileField(
-        upload_to='scripts/',
+    repo_url = models.CharField(
+        max_lenth=128,
+        min_length=1,
         blank=False,
         null=False,
-        unique=False,
+        unique=True,
     )
-    revision = models.IntegerField(blank=False)
+    version = models.IntegerField(blank=False)
     creation_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
