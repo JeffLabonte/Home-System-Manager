@@ -3,3 +3,5 @@
 ansible
 neovim
 flake8
+jedi
+black
