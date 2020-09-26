@@ -2,42 +2,30 @@ from django.db import models
 
 from uuid import uuid4
 
-FILE_TYPE_CHOICES = [
-    ('bash', 'Bourne Again Shell Script'),
-    ('py', 'Python Script'),
-    ('sh', 'Shell Script'),
-    ('yaml', 'YAML'),
-]
 
-
-class Script(models.Model):
+class ScriptExecution(models.Model):
     id = models.UUIDField(
         primary_key=True,
         default=uuid4,
         editable=False,
     )
-    name = models.CharField(
-        max_length=64,
-        null=False,
+    git_repo = models.ForeignKey(
+        "GitRepo",
+        on_delete=models.CASCADE,
+    )
+    script_to_execute = models.CharField(
+        min_length=1,
         blank=False,
-    )
-    repository = models.CharField(
-
-    )
-    file_type = models.CharField(
-        max_length=5,
-        choices=FILE_TYPE_CHOICES,
         null=False,
     )
-    last_date_modified = models.DateTimeField(auto_now=True)
-    creation_date = models.DateTimeField(auto_now_add=True)
+    arguments = models.CharField(
+        min_length=1,
+        blank=False,
+        null=False,
+    )
 
-    class Meta:
-        ordering = [
-            'name',
-            'last_date_modified',
-            'creation_date',
-        ]
+    def __str__(self):
+        return f"Running {self.script_to_execute} with {self.arguments} from {self.git_repo.repo_url}"
 
 
 class GitRepo(models.Model):
@@ -58,12 +46,36 @@ class GitRepo(models.Model):
 
     class Meta:
         ordering = [
-            'revision',
-            'creation_date',
-            'id',
+            "revision",
+            "creation_date",
+            "id",
         ]
 
     def __str__(self):
-        return f'Filename: {self.script_file.name},' \
-               f' Revision: {self.revision},' \
-               f' Create at ${self.creation_date}'
+        return f"Filename: {self.script_file.name}, Revision: {self.revision}, Create at ${self.creation_date}"
+
+
+class Script(models.Model):
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid4,
+        editable=False,
+    )
+    name = models.CharField(
+        max_length=64,
+        null=False,
+        blank=False,
+    )
+    repository = models.ForeignKey(
+        "GitRepo",
+        on_delete=models.CASCADE,
+    )
+    last_date_modified = models.DateTimeField(auto_now=True)
+    creation_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = [
+            "name",
+            "last_date_modified",
+            "creation_date",
+        ]
