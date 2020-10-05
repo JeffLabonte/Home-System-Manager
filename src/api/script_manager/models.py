@@ -43,11 +43,13 @@ class GitRepo(models.Model):
     )
     version = models.IntegerField(blank=False)
     creation_date = models.DateTimeField(auto_now_add=True)
+    last_date_modified = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = [
             "revision",
             "creation_date",
+            "last_date_modified",
             "id",
         ]
 
