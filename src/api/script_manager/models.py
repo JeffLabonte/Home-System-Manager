@@ -14,12 +14,12 @@ class ScriptExecution(models.Model):
         on_delete=models.CASCADE,
     )
     script_to_execute = models.CharField(
-        min_length=1,
+        max_length=128,
         blank=False,
         null=False,
     )
     arguments = models.CharField(
-        min_length=1,
+        max_length=128,
         blank=False,
         null=False,
     )
@@ -35,8 +35,7 @@ class GitRepo(models.Model):
         editable=False,
     )
     repo_url = models.CharField(
-        max_lenth=128,
-        min_length=1,
+        max_length=128,
         blank=False,
         null=False,
         unique=True,
@@ -47,7 +46,7 @@ class GitRepo(models.Model):
 
     class Meta:
         ordering = [
-            "revision",
+            "version",
             "creation_date",
             "last_date_modified",
             "id",
