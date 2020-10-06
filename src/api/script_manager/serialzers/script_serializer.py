@@ -1,5 +1,6 @@
 from uuid import uuid4
 
+from django.db import transaction
 from rest_framework import serializers
 
 from api.script_manager.models import Script, ScriptExecution, GitRepo
@@ -74,11 +75,14 @@ class ScriptSerializer(serializers.ModelSerializer):
         min_length=1,
     )
 
+    repository = GitRepoSerializer()
+
     def create(self, validated_data):
-        script_revision = ScriptRevision(**validated_data.pop('script'))
-        script = Script(script=script_revision, **validated_data)
-        script_revision.save()
-        script.save()
+        with transaction.atomic():
+            repository = validated_data.pop('repository')
+            git_repo = GitRepoSerializer().create(repository)
+            script = Script(repository=git_repo, **validated_data)
+            script.save()
 
         return script
 
