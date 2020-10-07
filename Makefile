@@ -54,3 +54,12 @@ run_server:
 
 codestyle:
 	flake8
+
+start_server:
+	docker-compose up -d
+
+stop_server:
+	docker-compose down
+
+enter_env:
+	docker-compose exec web bash
