@@ -80,8 +80,7 @@ class ScriptSerializer(serializers.ModelSerializer):
         model = Script
         fields = [
             'name',
-            'script',
-            'file_type',
+            'repository',
             'last_date_modified',
             'creation_date',
         ]
