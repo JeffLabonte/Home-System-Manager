@@ -15,21 +15,19 @@ class GitRepoSerializer(serializers.ModelSerializer):
         max_length=128,
         required=True,
     )
-    revision = serializers.IntegerField(required=True)
+    version = serializers.CharField(required=True)
 
     class Meta:
         model = GitRepo
         fields = [
             'id',
-            'script_file',
-            'revision',
-            'last_date_modified',
-            'creation_date'
+            'repo_url',
+            'version',
         ]
         default_fields = [
             'id',
-            'script_file',
-            'revision',
+            'repo_url',
+            'version',
         ]
         read_only_fields = [
             'id',
