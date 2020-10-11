@@ -40,7 +40,11 @@ class GitRepo(models.Model):
         null=False,
         unique=True,
     )
-    version = models.IntegerField(blank=False)
+    version = models.CharField(
+        max_length=32,
+        blank=False,
+        null=False,
+    )
     creation_date = models.DateTimeField(auto_now_add=True)
     last_date_modified = models.DateTimeField(auto_now=True)
 
