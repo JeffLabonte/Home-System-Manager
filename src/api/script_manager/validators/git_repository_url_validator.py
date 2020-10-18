@@ -18,3 +18,6 @@ class GitRepositoryURLValidator:
         if not self.is_valid(value):
             message = "I expect a GIT or a HTTPS URL"
             raise serializers.ValidationError(message)
+
+
+GIT_REPOSTORY_URL_VALIDATOR = GitRepositoryURLValidator()

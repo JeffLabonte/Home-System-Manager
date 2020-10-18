@@ -5,11 +5,11 @@ from api.script_manager.validators.git_repository_url_validator import GitReposi
 
 INVALID_REPOS = [
     'something_wrong',
-    1,
     'it@test.com:JeffLabonte/ThisDood.git',
     'git@test.com:JeffLabonte/ThisDood.gt',
     'git@test.com:JeffLabonte/',
     'git@test.com:JeffLabonte',
+    1,
 ]
 
 

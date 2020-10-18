@@ -4,6 +4,7 @@ from django.db import transaction
 from rest_framework import serializers
 
 from api.script_manager.models import Script, ScriptExecution, GitRepo
+from api.script_manager.validators.git_repository_url_validator import GIT_REPOSTORY_URL_VALIDATOR
 
 
 class GitRepoSerializer(serializers.ModelSerializer):
@@ -14,6 +15,7 @@ class GitRepoSerializer(serializers.ModelSerializer):
     repo_url = serializers.CharField(
         max_length=128,
         required=True,
+        validators=[GIT_REPOSTORY_URL_VALIDATOR, ]
     )
     version = serializers.CharField(required=True)
 
