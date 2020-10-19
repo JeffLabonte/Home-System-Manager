@@ -63,3 +63,6 @@ stop_server:
 
 enter_env:
 	docker-compose exec web bash
+
+test_unit:
+	cd src/ && py.test tests/unit/
