@@ -23,7 +23,9 @@ jobs:
     - name: Install dependencies
       run: |
         make deps_dev
-
     - name: Validate codestyle
       run: |
         make codestyle
+    - name: Run unit test
+      run: |
+        make test_unit
