@@ -65,4 +65,4 @@ enter_env:
 	docker-compose exec web bash
 
 test_unit:
-	py.test tests/unit/
+	cd src/ && py.test tests/unit/

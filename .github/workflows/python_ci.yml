@@ -28,4 +28,5 @@ jobs:
         make codestyle
     - name: Run unit test
       run: |
+        export DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}
         make test_unit
