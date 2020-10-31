@@ -15,7 +15,7 @@ docker_compose_full_reset:
 	docker-compose up -d
 
 enter_dev_env:
-	docker-compose run web /bin/bash
+	docker-compose exec web /bin/bash
 
 update_dev_configs:
 	make reset_docker_compose
@@ -60,9 +60,6 @@ start_server:
 
 stop_server:
 	docker-compose down
-
-enter_env:
-	docker-compose exec web bash
 
 test_unit:
 	cd src/ && py.test tests/unit/
