@@ -1,7 +1,10 @@
-SHELL := /bin/bash
+SHELL := /usr/bin/env bash
 
-deps_dev:
+deps_dev: update_pip
 	pip install -r requirements/requirements.dev.txt
+
+update_pip:
+	pip install --upgrade pip
 
 setup:
 	cp templates/env.template.sh envs/env.dev
