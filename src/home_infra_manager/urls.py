@@ -16,7 +16,6 @@ Including another URLconf
 from rest_framework import routers
 from rest_framework.authtoken import views
 from api.script_manager.views import script_view
-from api.user import user_view
 
 from django.conf.urls import url
 from django.contrib import admin
@@ -25,7 +24,6 @@ from django.urls import path, include
 
 router = routers.DefaultRouter()
 router.register(r'script', script_view.ScriptViewSet)
-router.register(r'user', user_view.UserViewsets)
 
 
 urlpatterns = [
