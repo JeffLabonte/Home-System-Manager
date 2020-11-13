@@ -17,7 +17,7 @@ stdenv.mkDerivation rec {
         export DB_PORT=5432
         export POSTGRES_DB=home_infra_dev
         export POSTGRES_USERNAME=home_infra_dev
-        export POSTGRES_PASSWORD=$(uuidgen)
+        export POSTGRES_PASSWORD=$(uuidgen | base64)
 
         if [ ! -d .venv/ ]; then
             python3 -m venv .venv
