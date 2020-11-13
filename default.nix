@@ -7,8 +7,7 @@ stdenv.mkDerivation rec {
         pgcli
         python38
         python38Packages.pip
-        python38Packages.django
-        python38Packages.djangorestframework
+        python38Packages.setuptools
         python38Packages.psycopg2
     ];
     shellHook = ''
@@ -18,10 +17,10 @@ stdenv.mkDerivation rec {
         export POSTGRES_DB=home_infra_dev
         export POSTGRES_USERNAME=home_infra_dev
 
-	PASSWORD_FILE=".generated_passwor"
-	if [ ! -f $PASSWORD_FILE ]; then
-		$(uuidgen | base64) > $PASSWORD_FILE
-	fi
+	      PASSWORD_FILE=".generated_password"
+	      if [ ! -f $PASSWORD_FILE ]; then
+            echo "$(uuidgen | base64)" > $PASSWORD_FILE
+	      fi
 
         export POSTGRES_PASSWORD=$(cat $PASSWORD_FILE)
 
