@@ -135,3 +135,4 @@ envs/env.test
 **/.\#*
 **/*~
 **/#*#
+.generated_password

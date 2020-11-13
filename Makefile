@@ -1,5 +1,8 @@
 SHELL := /usr/bin/env bash
 
+enter_dev_env:
+	nix-shell . --command "zsh"
+
 deps_dev: update_pip
 	pip install -r requirements/requirements.dev.txt
 
@@ -16,9 +19,6 @@ docker_compose_full_reset:
 	docker-compose down -v
 	make update_dev_configs
 	docker-compose up -d
-
-enter_dev_env:
-	docker-compose exec web /bin/bash
 
 update_dev_configs:
 	make reset_docker_compose
