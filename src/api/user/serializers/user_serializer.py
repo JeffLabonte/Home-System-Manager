@@ -14,16 +14,16 @@ class UserSerializer(serializers.ModelSerializer):
     last_name = serializers.CharField(
         required=True,
     )
-    
+
     class Meta:
         model = get_user_model()
         fields = [
-            'email',
-            'first_name',
-            'last_name',
+            "email",
+            "first_name",
+            "last_name",
         ]
         default_fields = [
-            'email',
-            'first_name',
-            'last_name',
+            "email",
+            "first_name",
+            "last_name",
         ]
