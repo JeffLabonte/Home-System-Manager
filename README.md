@@ -4,10 +4,9 @@
 This is an API and soon a web interface to help you automate your updates/backups/ansible scripts from one place!
 
 
-This is my testing ground for DRF, Django, and nix-shell. As long as this project won't be used in my house.
+This is testing ground at the moment.
 
 ## Requirements:
 
 * docker
 * docker-compose
-* [nix](https://nixos.org/download.html)
