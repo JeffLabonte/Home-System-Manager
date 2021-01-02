@@ -2,12 +2,20 @@ version: '3'
 
 services:
   broker:
-    image: rabbitmq
+    image: rabbitmq:3-management
     environment:
       - RABBITMQ_ERLANG_COOKIE='test'
       - RABBITMQ_NODENAME=rabbit@localhost
     ports:
       - 8080:15672
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:15672"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
   script_service:
     build: services/script_service/.
-    
+    restart: on-failure
+    links:
+      - broker
+
