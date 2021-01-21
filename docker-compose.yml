@@ -1,6 +1,12 @@
-version: '3'
+version: '2.2'
 
 services:
+  script_service:
+    build: services/script_service/.
+    restart: on-failure
+    depends_on:
+      broker:
+        condition: service_healthy
   broker:
     build: broker/.
     environment:
@@ -13,12 +19,3 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
-  script_service:
-    build: services/script_service/.
-    restart: on-failure
-    depends_on:
-      broker:
-        condition: service_healthy
-    links:
-      - broker
-
