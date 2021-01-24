@@ -1,3 +1,6 @@
 [submodule "services/script_service"]
 	path = services/script_service
 	url = git@github.com:JeffLabonte/HSM-Script-Service.git
+[submodule "services/web_page_backend"]
+	path = services/web_page_backend
+	url = git@github.com:JeffLabonte/HSM-WebPage-backend.git
