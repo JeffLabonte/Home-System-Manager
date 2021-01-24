@@ -7,6 +7,12 @@ services:
     depends_on:
       broker:
         condition: service_healthy
+  web_page_backend:
+    build: services/web_page_backend/.
+    restart: on-failure
+    depends_on:
+      broker:
+        condition: service_healthy
   broker:
     build: broker/.
     environment:
